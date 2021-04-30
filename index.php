@@ -1,11 +1,6 @@
 <?php
-
-use App\App;
-
-function __autoload($classe){
-
-	include_once "{$classe}.php";
-}
+include_once "App/App.php";
+include_once "App/Controllers/HomeController.php";
 
 try {
 	$app = new App();
