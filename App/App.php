@@ -12,31 +12,57 @@ class App
 		$this->url();
 	}
 
-	public function run(){
+	public function run()
+	{
+		// Verifica se há controller, joga valores para controllerName
 		if (isset($this->controller) && !empty($this->controller)) 
 		{
 			$this->controllerName = ucfirst($this->controller."Controller");
 			$this->controllerName = preg_replace('/[^a-zA-Z]/i','',$this->controllerName);
 
 			$this->controllerFile = $this->controllerName.".php";
-			$this->action = preg_replace('/[^a-zA-Z]/i','',$this->action);
+			$this->action = preg_replace('/[^a-zA-Z]/i','',$this->action);			
 			
 		} else {
 			$this->controllerName = 'HomeController';
 		}
 		//var_dump($this->controllerName,$this->controllerFile,$this->action);
 
-		if(!$this->controller){
-			$objetoClasse = new HomeController($this);
+		// Se não existir controller vai instanciar o homeController por padrão.
+		/*if(!$this->controller)
+		{
+			$nomeClasse = $this->controllerName;
+			$objetoClasse = new $nomeClasse($this);
 			$objetoClasse->index();
 			//var_dump($objetoClasse);
-		}
+		}*/
 
-		if (!file_exists("App/Controllers/" . $this->controllerFile)) {
+		// Verificar se existe o diretorio
+		if (!file_exists("App/Controllers/" . $this->controllerFile))
+		{
 			throw new Exception("Pagina não encontrada");
 		}
+
+		// Instancia a classe 
 		$nomeClasse =  $this->controllerName; // "\\App\\Controller\\".$this->controllerName;
-		$objetoClasse = new $nomeClasse($this);
+
+		// Se não existir a classe, entra no if
+		if(!class_exists($nomeClasse))
+		{
+			throw new Exception("Suporte já esta verificando o erro",500);
+		} else {
+			// Se classe existir instancia a classe.
+			$objetoClasse = new $nomeClasse($this);
+		}
+
+		if (method_exists($objetoClasse,$this->action)) {
+			$objetoClasse->{$this->action}($this->params);
+			return;
+		} else if (!$this->action && method_exists($objetoClasse, 'index')) {
+			$objetoClasse->index($this->params);
+		} else {
+			throw new Exception("Suporte esta verificando o erro");
+		}
 	}
 
 	public function url()
@@ -78,9 +104,9 @@ class App
 		return $this->action;
 	}
 
-	public function getParam()
+	public function getControllerName()
 	{
-		return $this->param;
+		return $this->getControllerName;
 	}
 
 }
