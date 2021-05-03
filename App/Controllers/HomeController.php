@@ -8,7 +8,7 @@ class HomeController extends Controller{
     public function index (){
         echo"chamou o index";
        
+        var_dump(PATH);
     }
-
 
 }

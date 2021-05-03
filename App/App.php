@@ -36,17 +36,18 @@ class App
 		$this->action = preg_replace('/[^a-zA-Z]/i','',$this->action);	
 
 		// Se não existir controller vai instanciar o homeController por padrão.
-		if(!$this->controller)
+		/*if(!$this->controller)
 		{
 			$this->controller = new HomeController($this);
 			$this->controller->index();
-		}
+			return;
+		}*/
 
 		// Verifica se existe o diretorio
 		if (!file_exists(PATH."/App/Controllers/".$this->controllerFile)) {
 			throw new Exception("Pagina não encontrada!");
 		}
-
+		
 		$nomeClasse =  $this->controllerName;
 		$objetoClasse = new $nomeClasse($this);
 		/*echo"<pre>";
