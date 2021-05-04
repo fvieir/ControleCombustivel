@@ -17,17 +17,21 @@ abstract class Controller {
         }
     }
 
-    public function getViewVar(){
-        return $this->viewVar;
-    }
-
-    public function render(){
-        $viewVar = $this->getViewVar();
-
-        include_once PATH."/Views/layouts/".$viewVar;
+    public function render($view){
+        
+        $this->getViewVar();
+        $Sessao = Sessao::class;
+        
+        require_once PATH. "/App/Views/layouts/header.php";
+        require_once PATH. "/App/Views/layouts/menu.php";
+        require_once PATH. "/App/Views/" .$view. ".php";
+        require_once PATH. "/App/Views/layouts/footer.php";
 
     }
 	
+    public function getViewVar(){
+        return $this->viewVar;
+    }
 
 }
 

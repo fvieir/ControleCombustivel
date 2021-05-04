@@ -2,7 +2,9 @@
 include_once "App/App.php";
 include_once "App/Controllers/Controller.php";
 include_once "App/Controllers/HomeController.php";
+include_once "App/Controllers/UsuarioController.php";
 
+session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 
 try {

@@ -1,5 +1,6 @@
 <?php
 require_once "App/Controllers/HomeController.php";
+require_once "App/Controllers/UsuarioController.php";
 
 class App 
 {

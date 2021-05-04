@@ -6,9 +6,7 @@ require_once "App/App.php";
 class HomeController extends Controller{
 
     public function index (){
-        echo"chamou o index";
-       
-        var_dump(PATH);
+       $this->render('home/index');
     }
 
 }
