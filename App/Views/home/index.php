@@ -9,12 +9,14 @@
 
         <div>
             <span for="login">Login</span><br>
-            <input type="text" name="login" id="login">
+            <input type="text" name="login" id="login" 
+            value="<?= App\Lib\Sessao::retornaValorFormulario('login');?>">
         </div>
 
         <div>
             <span for="senha">Senha</span><br>
-            <input type="password" name="senha" id="senha">
+            <input type="password" name="senha" id="senha"
+            value="<?= App\Lib\Sessao::retornaValorFormulario('senha');?>">
         </div><br>
 
         <input type="submit" name="cadastrar" id="cadastrar"> 
