@@ -11,9 +11,9 @@ class Sessao {
         unset($_SESSION['mensagem']);
     }*/
 
-    /*public static function gravaMensagem(){
-        $_SESSION['mensagem'] = '';
-    }*/
+    public static function gravaMensagem($mensagem){
+        $_SESSION['mensagem'] = $mensagem;
+    }
 
     public static function retornaValorFormulario($key){
           return (isset($_SESSION['form'][$key])) ? $_SESSION['form'][$key] : "";

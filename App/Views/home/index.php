@@ -1,4 +1,16 @@
 <div>
+<?php 
+
+    require_once "App\Lib\Sessao.php";
+
+    if(App\Lib\Sessao::gravaMensagem()){
+        $msg = App\Lib\Sessao::gravaMensagem();
+    }
+?>
+
+<div>
+    <p> <?echo $msg;?></p>
+</div>
 <form action="http://localhost/controlecombustivel/usuario/cadastrar" method="post">
     <fieldset>
         <legend>Cadastro de Usuario</legend>
