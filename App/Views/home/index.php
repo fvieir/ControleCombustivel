@@ -3,9 +3,9 @@
 
     require_once "App\Lib\Sessao.php";
 
-    if(App\Lib\Sessao::gravaMensagem()){
+   /* if(App\Lib\Sessao::gravaMensagem()){
         $msg = App\Lib\Sessao::gravaMensagem();
-    }
+    }*/
 ?>
 
 <div>

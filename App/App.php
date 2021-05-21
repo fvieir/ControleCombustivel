@@ -1,6 +1,11 @@
 <?php
-require_once "App/Controllers/HomeController.php";
-require_once "App/Controllers/UsuarioController.php";
+
+namespace App;
+
+//use App\Controllers\Controller;
+use App\Controllers\HomeController;
+use App\Controllers\UsuarioController;
+
 
 class App 
 {
@@ -49,7 +54,7 @@ class App
 			throw new Exception("Pagina não encontrada!");
 		}
 		
-		$nomeClasse =  $this->controllerName;
+		$nomeClasse =  '\\App\\Controllers\\'.$this->controllerName;
 		$objetoClasse = new $nomeClasse($this);
 		/*echo"<pre>";
 		print_r($objetoClasse);

@@ -1,7 +1,10 @@
 <?php
-require_once "App/Lib/Conexao.php";
-require_once "App/Controllers/Controller.php";
-require_once "App/App.php";
+
+namespace App\Controllers;
+
+use App\Controllers\Controller;
+use App\App;
+use App\Lib\Conexao;
 
 class HomeController extends Controller{
 

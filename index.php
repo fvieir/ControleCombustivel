@@ -1,15 +1,17 @@
 <?php
-include_once "App/App.php";
-include_once "App/Controllers/Controller.php";
-include_once "App/Controllers/HomeController.php";
-include_once "App/Controllers/UsuarioController.php";
+
+use App\App;
 
 session_start();
+
 error_reporting(E_ALL & ~E_NOTICE);
 
+require_once("vendor/autoload.php");
+
 try {
-	$app = new App();
-	$app->run();
-} catch (Exception $e) {
-	echo "Erro ->".$e->getMessage();
+    $app = new App();
+    $app->run();
+}catch (\Exception $e){
+    $oError = new Erro($e);
+    $oError->render();
 }

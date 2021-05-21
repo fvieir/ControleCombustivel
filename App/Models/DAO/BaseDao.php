@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Models\DAO;
+
+use App\Lib\Conexao;
+
 abstract class BaseDao {
 
     private $conexao;

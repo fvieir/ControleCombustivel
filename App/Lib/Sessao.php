@@ -7,9 +7,10 @@ class Sessao {
        $_SESSION['form'] = $form;
     }
 
-    /*public static function limpaMensagem(){
+    public static function limpaMensagem()
+    {
         unset($_SESSION['mensagem']);
-    }*/
+    }
 
     public static function gravaMensagem($mensagem){
         $_SESSION['mensagem'] = $mensagem;

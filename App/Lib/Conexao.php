@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Lib;
+
+use PDO;
+use Exception;
+
 class Conexao {
 
     public static $con = null;
@@ -11,13 +16,13 @@ class Conexao {
         
         try {
             if (self::$con === null) {
-                self::$con= new PDO($pdoConfig,DB_USER,DB_PASSWORD,
+                self::$con= new \PDO($pdoConfig,DB_USER,DB_PASSWORD,
                             array(PDO::ATTR_ERRMODE,
                                   PDO::ERRMODE_EXCEPTION,
                                   PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES utf8"));    
             }
             return self::$con;  
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo "Erro-> ".$e->getMessage();
         }
         
