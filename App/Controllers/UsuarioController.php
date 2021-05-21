@@ -19,11 +19,12 @@ class UsuarioController extends Controller{
         \App\Lib\Sessao::gravarDados($_POST);
 
         $usuarioDao = new UsuarioDao();
-        $usuario = $usuarioDao->buscarEmail($_POST['email']);
+        $usuario = $usuarioDao->buscarPorEmail($_POST['email']);
 
-        if ($usuario->getstatus()==1) {
-            \App\Lib\Sessao::gravaMensagem('Usuario já cadastrado');
+        var_dump($usuario->getStatus());
 
+        if ($usuario->getStatus() == 1) {
+           echo \App\Lib\Sessao::gravaMensagem('Usuario já cadastrado');
         }
 
         
