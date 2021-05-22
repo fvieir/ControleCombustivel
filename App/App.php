@@ -17,7 +17,8 @@ class App
 
 	public function __construct(){
 
-		define(APP_HOST,$_SERVER['HTTP_HOST']."/");// Retorna o localhost com barra
+		//define(APP_HOST,$_SERVER['HTTP_HOST']."/");// Retorna o localhost com barra
+		define('APP_HOST', $_SERVER['HTTP_HOST'] . "/");
         define(PATH,realpath("./")); // Retorna o caminho absoluto diretorio
         define(DB_HOST,$_SERVER['HTTP_HOST']); // Retorna o nome do localhost
         define(DB_USER,'root');

@@ -35,6 +35,12 @@ abstract class Controller {
         return $this->viewVar;
     }
 
+    public function redirect($view)
+    {
+        header('Location: http://'. APP_HOST .'ControleCombustivel/'.$view);
+        exit;
+    }
+
 }
 
 ?>

@@ -1,11 +1,13 @@
 <div>
 <?php 
 
-    require_once "App\Lib\Sessao.php";
+use App\Lib\Sessao;
+use App\Controllers\Controller;
 
-   /* if(App\Lib\Sessao::gravaMensagem()){
-        $msg = App\Lib\Sessao::gravaMensagem();
-    }*/
+if($mensagem = (App\Lib\Sessao::retornaMensagem()))
+{
+    echo $mensagem;
+}   
 ?>
 
 <div>

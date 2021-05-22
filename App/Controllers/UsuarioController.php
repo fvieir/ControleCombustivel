@@ -9,8 +9,8 @@ class UsuarioController extends Controller{
 
     public function index (){
       
-     // $this->render('usuario/index');
-      //Sessao::LimpaMensagem();
+      $this->render('usuario/index');
+      Sessao::LimpaMensagem();
 
     }
 
@@ -18,16 +18,24 @@ class UsuarioController extends Controller{
         
         \App\Lib\Sessao::gravarDados($_POST);
 
-        $usuarioDao = new UsuarioDao();
-        $usuario = $usuarioDao->buscarPorEmail($_POST['email']);
-
-        var_dump($usuario->getStatus());
-
-        if ($usuario->getStatus() == 1) {
-           echo \App\Lib\Sessao::gravaMensagem('Usuario já cadastrado');
+        try 
+        {
+            $usuarioDao = new UsuarioDao();
+            $usuario = $usuarioDao->buscarPorEmail($_POST['email']);
+    
+            if(!empty($usuario))
+            {
+                if ($usuario->getStatus() == 1) {
+                    \App\Lib\Sessao::gravaMensagem('Usuario já cadastrado');
+                    return $this->redirect('home/index');
+                 }   
+            }
+             
+        } catch (\Exception $e) {
+            
         }
+       
 
-        
     }
 
 }
